@@ -42,7 +42,7 @@ JOIN language l ON f.language_id = l.language_id;
 
 
 
-Select
+select
     s.first_name AS 'Vorname',
     s.last_name AS 'Nachname',
     a.address AS 'Strasse',
@@ -64,7 +64,7 @@ JOIN
 
 
 
-Select 
+select 
     f.title AS 'FilmTitel',
     l.name AS 'Sprache',
     a.first_name AS 'SchauspielerVorname',
@@ -87,7 +87,7 @@ JOIN
 
 
 
-Select 
+select 
     s.first_name AS 'Vorname',
     s.last_name AS 'Nachname',
     home_address.address AS 'Wohnadresse',
