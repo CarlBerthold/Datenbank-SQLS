@@ -10,7 +10,7 @@ CREATE TABLE Universitaeten (
     UniversitaetID INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(100),
     DekanID INT,
-    CONSTRAINT FK_Dekan_ID FOREIGN KEY (DekanID) REFERENCES Dekans(DekanID)
+    CONSTRAINT FK_Dekan_ID FOREIGN KEY (DekanID) REFERENCES Dekans(DekanID) ON DELETE CASCADE
 );
 
 CREATE TABLE Students (
@@ -18,7 +18,7 @@ CREATE TABLE Students (
     Vorname VARCHAR(50),
     Nachname VARCHAR(50),
     UniversitaetID INT,
-    CONSTRAINT FK_Universitaet_ID FOREIGN KEY (UniversitaetID) REFERENCES Universitaeten(UniversitaetID)
+    CONSTRAINT FK_Universitaet_ID FOREIGN KEY (UniversitaetID) REFERENCES Universitaeten(UniversitaetID) ON DELETE CASCADE
 );
 
 CREATE TABLE Vorlesungen (
@@ -32,8 +32,8 @@ CREATE TABLE StudentenVorlesungen (
     StudentID INT,
     VorlesungID INT,
     CONSTRAINT PRIMARY KEY (StudentID, VorlesungID),
-	CONSTRAINT FK_Student_ID FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
-    CONSTRAINT FK_Vorlesung_ID FOREIGN KEY (VorlesungID) REFERENCES Vorlesungen(VorlesungID)
+	CONSTRAINT FK_Student_ID FOREIGN KEY (StudentID) REFERENCES Student(StudentID) ON DELETE CASCADE,
+    CONSTRAINT FK_Vorlesung_ID FOREIGN KEY (VorlesungID) REFERENCES Vorlesungen(VorlesungID) ON DELETE CASCADE,
 );
 
 #Insert data
@@ -69,11 +69,15 @@ SELECT
     d.Titel AS DekanTitel
 FROM 
     Students s
-JOIN 
+INNER JOIN 
     StudentenVorlesungen sv ON s.StudentID = sv.StudentID
-JOIN 
+INNER JOIN 
     Vorlesungen v ON sv.VorlesungID = v.VorlesungID
-JOIN 
+INNER JOIN 
     Universitaeten u ON s.UniversitaetID = u.UniversitaetID
-JOIN 
+INNER JOIN 
     Dekans d ON u.DekanID = d.DekanID;
+
+
+
+DELETE FROM Students WHERE StudentID = 1;
