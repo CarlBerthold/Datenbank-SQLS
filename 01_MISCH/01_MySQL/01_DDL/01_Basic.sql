@@ -46,7 +46,7 @@
 */
 
 	CREATE TABLE Test
-	(	 IDTest		INT			IDENTITY(1,1)  PRIMARY KEY
+	(	 IDTest		INT			AUTO_INCREMENT  PRIMARY KEY
 		,Name		VARCHAR(30)					NOT NULL
 	);
 	
@@ -74,19 +74,18 @@
 
 -- ----------------------------- AUTO-INCREMENT ----------------------------------------
 -- Jede Spalte kann beim einfügen Automatisch hochgezählt werden wenn diese eine 
--- AUTO-INCREMENT definiert hat -> IDENTITY(1,1)
+-- AUTO-INCREMENT definiert hat.
 	
 	CREATE TABLE Dozent
     (
-		IDIdent			uniqueidentifier,
-		IDDozent 		INT				IDENTITY(1,1),
-        Name			VARCHAR(30)
+		IDDozent 		INT				AUTO_INCREMENT
+        ,Name			VARCHAR(30)
         
         ,CONSTRAINT		PK_Dozent_IDDozent 		PRIMARY KEY 	(IDDozent)
 	);
     
     INSERT 	Dozent	( 	Name 		)
-    VALUES			(	NEWID(),'Petersen', 2 	);
+    VALUES			(	'Petersen' 	);
     
 	INSERT 	Dozent	( 	Name 		)
     VALUES			(	'Vogt' 		);

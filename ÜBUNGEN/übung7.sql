@@ -8,6 +8,7 @@ select * from language;
 select * from staff;
 select * from actor_info;
 
+# Alle Schauspieler namen und deren Film
 select
     a.first_name AS 'schauspielerVorname', 
     a.last_name AS 'SchauspielerNachname', 
@@ -20,6 +21,7 @@ JOIN
     film f ON fa.film_id = f.film_id;
 
 
+# name vom Schauspieler und film mit Kategorie
 select 
     a.first_name AS 'schauspielerVorname',
     a.last_name AS 'SchauspielerNachname', 
@@ -34,6 +36,9 @@ JOIN
 JOIN 
     film_category fc ON f.film_id = fc.film_id;
 
+
+
+# Alle Filme mit Sprache
 select 
 f.title AS 'title',
 l.name AS 'sprache'
@@ -42,6 +47,7 @@ JOIN language l ON f.language_id = l.language_id;
 
 
 
+# Alle Mitarbeiter mit Wohnadresse in spalten optional könnte man es auch CONCAT() nutzen
 select
     s.first_name AS 'Vorname',
     s.last_name AS 'Nachname',
@@ -62,8 +68,7 @@ JOIN
 
 
 
-
-
+# Alle möglichen Informationen zu einem Film
 select 
     f.title AS 'FilmTitel',
     l.name AS 'Sprache',
@@ -86,7 +91,7 @@ JOIN
     category c ON fc.category_id = c.category_id;
 
 
-
+# Alle Mitarbeiter mit Wohn- und Arbeitsadresse
 select 
     s.first_name AS 'Vorname',
     s.last_name AS 'Nachname',
