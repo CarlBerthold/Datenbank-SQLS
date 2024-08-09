@@ -106,3 +106,5 @@ JOIN
     # need to join address again for workadress
 JOIN 
     address work_address ON store.address_id = work_address.address_id;
+
+    Select * from film as 'alles'
